@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+/* :root {
+  --font-urbanist: 'Urbanist', sans-serif;
+  --font-plus-jakarta: 'Plus Jakarta Sans', sans-serif;
+  --font-bowlby: 'Bowlby One', cursive;
+} */
+
+@theme inline {
+  --font-sans: var(--font-urbanist);
+  --font-jakarta: var(--font-plus-jakarta);
+  --font-bowlby: var(--font-bowlby);
+}
+ 
+html {
+  scroll-behavior: smooth;
+}
+
+
+body {
+   background-color: #FFFAF1;
+   /* color: var(--foreground);
+   font-family: var(--font-urbanist); */
+}
+
+.container {
+  /* max-width: 1400px; */
+  margin: 0 auto;
+  padding: 0 4%;
+}
+.nav-button {
+  position: relative;
+}
+
+.nav-button::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0;
+  height: 2px;
+  background-color: #8f54c5;
+  transition: width 0.3s ease;
+}
+
+.nav-button:hover::after {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 2%;
+  }
+}
+
+
