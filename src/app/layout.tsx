@@ -23,7 +23,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body
-        className={`${urbanist.variable} ${plusJakarta.variable} ${bowlbyOne.variable} antialiased bg-[#FFFAF1]` }
+        className={`${urbanist.variable} ${plusJakarta.variable} ${bowlbyOne.variable} antialiased ` }
       >
         {children}
       </body>

@@ -3,7 +3,7 @@ import React from "react";
 
 const index = () => {
   return (
-    <div id="section-one" className="flex items-center justify-between gap-4 my-20">
+    <div id="section-one" className="flex items-center justify-between gap-4 mb-20 pt-20">
       <div className=" pl-4 flex flex-col items-start justify-center">
         <h1 className="text-6xl font-[400] text-[#424242] font-bowlby ">
           Who’s your MVP?
