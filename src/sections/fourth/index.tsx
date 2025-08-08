@@ -4,11 +4,11 @@ import React from "react";
 const index = () => {
   return (
     <div className="my-10 p-6 flex flex-col items-center justify-center gap-10 mt-[10px] relative px-14">
-      <h1 className="text-5xl font-[700] font-jakarta text-[#F7F5FA]">This crown could be for:</h1>
+      <h1 className="md:text-5xl text-3xl font-[700] font-jakarta text-[#F7F5FA] text-center">This crown could be for:</h1>
       <div className="relative h-[400px] w-full">
         <div className="absolute top-0 right-1/2 transform translate-x-1/2  rotate-3 border-8  border-[#F8A80D] rounded-2xl text-[#424242]  bg-gradient-to-t from-[#d3b64c] to-[#f0deb1] flex flex-col items-start justify-start gap-2 p-4">
-          <p className="font-jakarta font-extrabold text-[13px]">🔥 Best Person</p>
-          <p className="font-sans font-[700] text-[11px] text-start">
+          <p className="font-jakarta font-extrabold md:text-[13px] text-[11px]">🔥 Best Person</p>
+          <p className="font-sans font-[700] md:text-[11px] text-[9px] text-start">
             Just launched my new project!
             <br />
             Excited to share it with the community 🚀
@@ -16,29 +16,29 @@ const index = () => {
         </div>
 
         <div className="absolute top-[50px] left-[50px] transform -rotate-6 border-8  border-[#F8A80D] pb-10 rounded-2xl text-[#424242]  bg-gradient-to-t from-[#d3b64c] to-[#f0deb1] p-4 flex flex-col items-start justify-start gap-4">
-          <p className="font-jakarta font-extrabold text-[13px]">🔥 Best Person</p>
-          <p className="font-sans font-[700] text-[11px]">
+          <p className="font-jakarta font-extrabold md:text-[13px] text-[11px]">🔥 Best Person</p>
+          <p className="font-sans font-[700] md:text-[11px] text-[9px]">
             Crowned for being lowkey iconic
           </p>
         </div>
 
         <div className="absolute bottom-20 transform -rotate-[20deg]  border-8  border-[#F8A80D] rounded-2xl text-[#424242]  bg-gradient-to-t from-[#d3b64c] to-[#f0deb1] p-4 flex flex-col items-start justify-start gap-4">
-          <p className="font-jakarta font-extrabold text-[13px]">🔥 Best Person</p>
-          <p className="font-sans font-[700] text-[11px]">
+          <p className="font-jakarta font-extrabold md:text-[13px] text-[11px]">🔥 Best Person</p>
+          <p className="font-sans font-[700] md:text-[11px] text-[9px]">
             Crowned for being lowkey iconic
           </p>
         </div>
 
         <div className="absolute top-[50px] right-[50px] transform rotate-6  border-8  border-[#F8A80D]  rounded-2xl text-[#424242]  bg-gradient-to-t from-[#d3b64c] to-[#f0deb1] p-4 flex flex-col items-start justify-start gap-4">
-          <p className="font-jakarta font-extrabold text-[13px]">🔥 Best Person</p>
-          <p className="font-sans font-[700] text-[11px]">
+          <p className="font-jakarta font-extrabold md:text-[13px] text-[11px]">🔥 Best Person</p>
+          <p className="font-sans font-[700] md:text-[11px] text-[9px]">
             Crowned for being lowkey iconic
           </p>
         </div>
 
         <div className="absolute bottom-20 right-0 transform rotate-[20deg] border-8  border-[#F8A80D]  rounded-2xl text-[#424242]  bg-gradient-to-t from-[#d3b64c] to-[#f0deb1] p-4 flex flex-col items-start justify-start gap-4">
-          <p className="font-jakarta font-extrabold text-[13px]">🔥 Best Person</p>
-          <p className="font-sans font-[700] text-[11px]">
+          <p className="font-jakarta font-extrabold md:text-[13px] text-[11px]">🔥 Best Person</p>
+          <p className="font-sans font-[700] md:text-[11px] text-[9px]">
             Crowned for being lowkey iconic
           </p>
         </div>

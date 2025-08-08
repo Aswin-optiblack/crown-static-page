@@ -14,18 +14,12 @@ import Bottom from "@/sections/bottom";
 
 export default function Home() {
   return (
-    <div className="container bg-gradient-to-r from-[#6232C2] to-[#9F54DF] min-h-screen">
-      {/* <Header /> */}
+    <div className="container ">
       <Hero />
       <HeroSecond />
-
       <SectionFour />
-
-       <SectionThree />
-<Bottom />
-
-      
-  
+      <SectionThree />
+      <Bottom />
     </div>
   );
 }

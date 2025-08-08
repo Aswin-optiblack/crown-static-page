@@ -14,7 +14,7 @@ const plusJakarta = Plus_Jakarta_Sans({
 });
 
 const bowlbyOne = Bowlby_One({
-  weight: "400", // Only one weight available
+  weight: "400", 
   subsets: ["latin"],
   variable: "--font-bowlby",
 });

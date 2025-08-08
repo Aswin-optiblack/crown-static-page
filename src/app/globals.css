@@ -1,10 +1,5 @@
 @import "tailwindcss";
 
-/* :root {
-  --font-urbanist: 'Urbanist', sans-serif;
-  --font-plus-jakarta: 'Plus Jakarta Sans', sans-serif;
-  --font-bowlby: 'Bowlby One', cursive;
-} */
 
 @theme inline {
   --font-sans: var(--font-urbanist);
@@ -16,12 +11,10 @@ html {
   scroll-behavior: smooth;
 }
 
-
-body {
-   background-color: #FFFAF1;
-   /* color: var(--foreground);
-   font-family: var(--font-urbanist); */
-}
+ body {
+    background: linear-gradient(to right, #6232C2, #9F54DF);
+    min-height: 100vh;
+  }
 
 .container {
   /* max-width: 1400px; */
