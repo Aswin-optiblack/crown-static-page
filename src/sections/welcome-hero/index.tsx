@@ -1,5 +1,4 @@
 import Image from "next/image";
-import React from "react";
 
 const index = () => {
   return (
@@ -9,7 +8,8 @@ const index = () => {
         className="md:h-[200px] h-[150px]"
         height={200}
         width={300}
-        alt="crown"
+        alt="Golden crown logo"
+        priority
       />
       <h1 className="font-jakarta font-[800] md:text-6xl text-4xl z-50 text-center">You’ve Been Crowned!</h1>
       <p className="font-sans font-[600] md:text-3xl text-2xl md:w-[800px] text-center md:pt-10 pt-5 leading-[40px] z-50">
@@ -23,7 +23,8 @@ const index = () => {
           className="md:h-[100px] h-[70px] z-10"
           height={70}
           width={70}
-          alt="lock"
+          alt="Security lock icon"
+          loading="lazy"
         />
       </div>
       <div className="absolute right-0 bottom-0 transform rotate-[0deg] ">
@@ -32,7 +33,8 @@ const index = () => {
           className="md:h-[150px] h-[100px] z-10"
           height={150}
           width={170}
-          alt="lock"
+          alt="Golden coin decoration"
+          loading="lazy"
         />
       </div>
 
@@ -42,7 +44,8 @@ const index = () => {
           className=""
           height={40}
           width={40}
-          alt="lock"
+          alt="Decorative star"
+          loading="lazy"
         />
       </div>
 
@@ -52,7 +55,8 @@ const index = () => {
           className=""
           height={30}
           width={30}
-          alt="lock"
+          alt="Decorative star"
+          loading="lazy"
         />
       </div>
 
@@ -62,7 +66,8 @@ const index = () => {
           className=""
           height={20}
           width={20}
-          alt="lock"
+          alt="Decorative star"
+          loading="lazy"
         />
       </div>
     </div>

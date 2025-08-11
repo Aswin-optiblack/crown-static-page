@@ -1,25 +1,42 @@
-import Image from "next/image";
-import Header from "@/components/header";
-import Footer from "@/components/footer";
-import SectionOne from "@/sections/first";
-import SectionTwo from "@/sections/second";
-import SectionThree from "@/sections/third";
-import SectionFour from "@/sections/fourth";
-import SectionFive from "@/sections/fifth";
-import SectionSix from "@/sections/sixth";
-import SectioSeven from "@/sections/seventh";
-import Hero from "@/sections/hero";
-import HeroSecond from "@/sections/hero_second";
-import Bottom from "@/sections/bottom";
+import HowItWorks from "@/sections/how-it-works";
+import CrownShowcase from "@/sections/crown-showcase";
+import WelcomeHero from "@/sections/welcome-hero";
+import MysteryReveal from "@/sections/mystery-reveal";
+import AppDownload from "@/sections/app-download";
 
 export default function Home() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Crowned",
+    "description": "The app where compliments turn into culture and giving flowers is a public flex.",
+    "url": "https://crown.getcrowned.fun",
+    "applicationCategory": "SocialNetworkingApplication",
+    "operatingSystem": ["iOS", "Android"],
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Crowned"
+    }
+  };
+
   return (
-    <div className="container ">
-      <Hero />
-      <HeroSecond />
-      <SectionFour />
-      <SectionThree />
-      <Bottom />
-    </div>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <div className="container ">
+        <WelcomeHero />
+        <MysteryReveal />
+        <CrownShowcase />
+        <HowItWorks />
+        <AppDownload />
+      </div>
+    </>
   );
 }

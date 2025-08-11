@@ -1,5 +1,4 @@
 import Image from "next/image";
-import React from "react";
 
 const index = () => {
   return (
@@ -46,9 +45,10 @@ const index = () => {
         <Image
           className="absolute -bottom-[100px] right-1/2 transform translate-x-1/2"
           src="/assets/crown.svg"
-          alt="crown"
+          alt="Golden crown logo"
           width={250}
           height={250}
+          loading="lazy"
         />
 
         <div className="absolute -left-5 top-0 transform rotate-[-20deg] ">
@@ -57,7 +57,8 @@ const index = () => {
                   className=""
                   height={70}
                   width={70}
-                  alt="lock"
+                  alt="Security lock icon"
+                  loading="lazy"
                 />
               </div>
               <div className="absolute -right-10 -bottom-20 transform rotate-[0deg] ">
@@ -66,7 +67,8 @@ const index = () => {
                   className=""
                   height={150}
                   width={150}
-                  alt="lock"
+                  alt="Gold coin decoration"
+                  loading="lazy"
                 />
               </div>
         
@@ -76,7 +78,8 @@ const index = () => {
                   className=""
                   height={40}
                   width={40}
-                  alt="lock"
+                  alt="Decorative star"
+                  loading="lazy"
                 />
               </div>
         
@@ -86,7 +89,8 @@ const index = () => {
                   className=""
                   height={30}
                   width={30}
-                  alt="lock"
+                  alt="Decorative star"
+                  loading="lazy"
                 />
               </div>
         
@@ -96,7 +100,8 @@ const index = () => {
                   className=""
                   height={20}
                   width={20}
-                  alt="lock"
+                  alt="Decorative star"
+                  loading="lazy"
                 />
               </div>
       </div>

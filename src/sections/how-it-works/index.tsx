@@ -1,6 +1,5 @@
 import Image from "next/image";
-import React from "react";
-import Card from "@/components/section_card";
+import Card from "@/components/FeatureCard";
 
 const index = () => {
   return (
@@ -22,26 +21,29 @@ const index = () => {
       </div>
       <Image
         src="/assets/gold_star.svg"
-        alt="star"
+        alt="Gold star decoration"
         width={20}
         height={20}
         className="absolute top-1/12 left-1/12"
+        loading="lazy"
       />
 
       <Image
         src="/assets/gold_star.svg"
-        alt="star"
+        alt="Gold star decoration"
         width={10}
         height={10}
         className="absolute bottom-1/12 left-1/12"
+        loading="lazy"
       />
 
       <Image
         src="/assets/gold_star.svg"
-        alt="star"
+        alt="Gold star decoration"
         width={15}
         height={15}
         className="absolute bottom-10 left-1/3"
+        loading="lazy"
       />
     </div>
   );

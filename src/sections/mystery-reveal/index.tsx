@@ -1,5 +1,4 @@
 import Image from "next/image";
-import React from "react";
 
 const index = () => {
   return (
@@ -22,9 +21,10 @@ const index = () => {
               <button className=" bg-black text-white px-4 py-1 rounded-xl border-2 border-[#BDBDBD]  flex items-center justify-center gap-2">
                 <Image
                   src="/assets/apple.svg"
-                  alt="App Store"
+                  alt="Apple App Store icon"
                   width={40}
                   height={40}
+                  loading="lazy"
                 />
                 <div className="flex flex-col items-start">
                   <span className="text-[12px] text-nowrap">
@@ -36,9 +36,10 @@ const index = () => {
               <button className=" bg-black text-white px-4 py-1 rounded-xl border-2 border-[#BDBDBD]  flex items-center justify-center gap-2">
                 <Image
                   src="/assets/playstore.svg"
-                  alt="App Store"
+                  alt="Google Play Store icon"
                   width={40}
                   height={40}
+                  loading="lazy"
                 />
                 <div className="flex flex-col items-start">
                   <span className="text-[12px] text-nowrap">Get it on</span>
@@ -53,9 +54,10 @@ const index = () => {
           <div className="relative">
             <Image
               src="/assets/blur_card.png"
-              alt="App Store"
+              alt="Blurred crown notification card"
               width={500}
               height={500}
+              loading="lazy"
             />
           </div>
         </div>

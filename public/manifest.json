@@ -1,0 +1,17 @@
+{
+  "name": "Crowned - Turn Compliments into Culture",
+  "short_name": "Crowned",
+  "description": "The app where compliments turn into culture and giving flowers is a public flex.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#F8A80D",
+  "icons": [
+    {
+      "src": "/assets/crown.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

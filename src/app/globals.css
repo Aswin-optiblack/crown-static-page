@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-
 @theme inline {
   --font-sans: var(--font-urbanist);
   --font-jakarta: var(--font-plus-jakarta);
@@ -11,33 +10,14 @@ html {
   scroll-behavior: smooth;
 }
 
- body {
-    background: linear-gradient(to right, #6232C2, #9F54DF);
-    min-height: 100vh;
-  }
+body {
+  background: linear-gradient(to right, #6232C2, #9F54DF);
+  min-height: 100vh;
+}
 
 .container {
-  /* max-width: 1400px; */
   margin: 0 auto;
   padding: 0 4%;
-}
-.nav-button {
-  position: relative;
-}
-
-.nav-button::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -5px;
-  width: 0;
-  height: 2px;
-  background-color: #8f54c5;
-  transition: width 0.3s ease;
-}
-
-.nav-button:hover::after {
-  width: 100%;
 }
 
 @media (max-width: 768px) {

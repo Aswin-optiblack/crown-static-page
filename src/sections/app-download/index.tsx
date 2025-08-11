@@ -1,5 +1,4 @@
 import Image from "next/image";
-import React from "react";
 
 const index = () => {
   return (
@@ -21,9 +20,10 @@ const index = () => {
               <button className="bg-black text-white px-4 py-1 rounded-xl border-2 border-[#BDBDBD]  flex items-center justify-center gap-2">
                 <Image
                   src="/assets/apple.svg"
-                  alt="App Store"
+                  alt="Apple App Store icon"
                   width={40}
                   height={40}
+                  loading="lazy"
                 />
                 <div className="flex flex-col items-start">
                   <span className="text-[12px] text-nowrap">
@@ -35,9 +35,10 @@ const index = () => {
               <button className="bg-black text-white px-4 py-1 rounded-xl border-2 border-[#BDBDBD]  flex items-center justify-center gap-2">
                 <Image
                   src="/assets/playstore.svg"
-                  alt="App Store"
+                  alt="Google Play Store icon"
                   width={40}
                   height={40}
+                  loading="lazy"
                 />
                 <div className="flex flex-col items-start">
                   <span className="text-[12px] text-nowrap">Get it on</span>
@@ -54,20 +55,22 @@ const index = () => {
               <div className="absolute bottom-[-5%] left-1/2 transform -translate-x-1/2">
                 <Image
                   src="/assets/mobile.svg"
-                  alt="Phone"
+                  alt="Mobile phone mockup"
                   width={250}
                   height={350}
                   className="max-w-none md:h-[350px] md:w-[250px] h-[300px] w-[200px]"
+                  loading="lazy"
                 />
               </div>
             </div>
             <div className="absolute top-[-5%] left-1/2 transform -translate-x-1/2">
               <Image
                 src="/assets/mobile_top.svg"
-                alt="Phone"
+                alt="Mobile phone screen"
                 width={250}
                 height={350}
                 className="max-w-none md:h-[350px] md:w-[250px] h-[300px] w-[200px]"
+                loading="lazy"
               />
             </div>
           </div>
@@ -102,27 +105,29 @@ const index = () => {
           <div className="absolute top-[5%] md:-left-[10%] left-0 transform -rotate-[20deg]">
             <Image
               src="/assets/crown.svg"
-              alt="crown"
+              alt="Golden crown logo"
               className="md:w-[125px] md:h-[100px] w-[100px] h-[80px]"
               width={125}
               height={100}
+              loading="lazy"
             />
           </div>
 
           <div className="absolute -top-[20%] -right-[2%]">
             <Image
               src="/assets/cloud.svg"
-              alt="cloud"
+              alt="Cloud decoration"
               width={100}
               height={100}
+              loading="lazy"
             />
           </div>
 
           <div className="absolute top-[5%] right-[15%]">
-            <Image src="/assets/rain.svg" alt="rain" width={45} height={40} />
+            <Image src="/assets/rain.svg" alt="Rain decoration" width={45} height={40} loading="lazy" />
           </div>
           <div className="absolute -bottom-[9%] right-0">
-            <Image src="/assets/lock.svg" className="md:w-[140px] md:h-[140px] w-[125px] h-[100px]" alt="lock" width={125} height={100} />
+            <Image src="/assets/lock.svg" className="md:w-[140px] md:h-[140px] w-[125px] h-[100px]" alt="Security lock icon" width={125} height={100} loading="lazy" />
           </div>
         </div>
       </div>
@@ -133,7 +138,8 @@ const index = () => {
           className=""
           height={40}
           width={40}
-          alt="lock"
+          alt="White star decoration"
+          loading="lazy"
         />
       </div>
 
@@ -143,7 +149,8 @@ const index = () => {
           className=""
           height={30}
           width={30}
-          alt="lock"
+          alt="White star decoration"
+          loading="lazy"
         />
       </div>
 
@@ -153,7 +160,8 @@ const index = () => {
           className=""
           height={20}
           width={20}
-          alt="lock"
+          alt="White star decoration"
+          loading="lazy"
         />
       </div>
 
@@ -163,7 +171,8 @@ const index = () => {
           className=""
           height={20}
           width={20}
-          alt="lock"
+          alt="White star decoration"
+          loading="lazy"
         />
       </div>
 
@@ -173,7 +182,8 @@ const index = () => {
           className=""
           height={20}
           width={20}
-          alt="lock"
+          alt="White star decoration"
+          loading="lazy"
         />
       </div>
     </div>
