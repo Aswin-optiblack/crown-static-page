@@ -1,6 +1,11 @@
+"use client";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
-const index = () => {
+const WelcomeHero = () => {
+  const pathname = usePathname();
+  const isCrownPage = pathname === "/crown";
+
   return (
     <div className="relative flex flex-col items-center justify-center md:pt-20 md:mb-10 pt-12 mb-6 text-[#F7F5FA]">
       <Image
@@ -11,10 +16,14 @@ const index = () => {
         alt="Golden crown logo"
         priority
       />
-      <h1 className="font-jakarta font-[800] md:text-6xl text-4xl z-50 text-center">You’ve Been Crowned!</h1>
+      <h1 className="font-jakarta font-[800] md:text-6xl text-4xl z-50 text-center">
+        {isCrownPage ? "Crown (sender's name) and Appreciate their personality" : "You've Been Crowned!"}
+      </h1>
       <p className="font-sans font-[600] md:text-3xl text-2xl md:w-[800px] text-center md:pt-10 pt-5 leading-[40px] z-50">
-        Someone from your circle just crowned you on Crowned — the app where
-        compliments turn into culture and giving flowers is a public flex.
+        {isCrownPage 
+          ? "They've sent you a link to hype them up on Crowned — the app where giving flowers and spreading positivity is a public flex."
+          : "Someone from your circle just crowned you on Crowned — the app where compliments turn into culture and giving flowers is a public flex."
+        }
       </p>
 
       <div className="absolute left-0 top-1/3 transform rotate-[-20deg] ">
@@ -74,4 +83,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default WelcomeHero;
