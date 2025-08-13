@@ -12,7 +12,7 @@ interface CrownMeResponse {
   status: string;
   statusCode: number;
   success: boolean;
-  data?: any;
+  data?: unknown;
 }
 
 export const useCrownMe = () => {
@@ -47,8 +47,15 @@ export const useCrownMe = () => {
       } else {
         throw new Error(response.data.message || 'Failed to send crown');
       }
-    } catch (err: any) {
-      const errorMessage = err.response?.data?.message || err.message || 'Failed to send crown';
+    } catch (err: unknown) {
+      let errorMessage = 'Failed to send crown';
+      
+      if (axios.isAxiosError(err)) {
+        errorMessage = err.response?.data?.message || err.message || 'Failed to send crown';
+      } else if (err instanceof Error) {
+        errorMessage = err.message;
+      }
+      
       setError(errorMessage);
       setSuccess(false);
       throw new Error(errorMessage);

@@ -60,8 +60,15 @@ export const usePrompts = () => {
       } else {
         throw new Error(response.data.message || 'Failed to fetch prompts');
       }
-    } catch (err: any) {
-      const errorMessage = err.response?.data?.message || err.message || 'Failed to fetch prompts';
+    } catch (err: unknown) {
+      let errorMessage = 'Failed to fetch prompts';
+      
+      if (axios.isAxiosError(err)) {
+        errorMessage = err.response?.data?.message || err.message || 'Failed to fetch prompts';
+      } else if (err instanceof Error) {
+        errorMessage = err.message;
+      }
+      
       setError(errorMessage);
       setCurrentPrompt('Failed to load prompts');
       console.error('Error fetching prompts:', err);
