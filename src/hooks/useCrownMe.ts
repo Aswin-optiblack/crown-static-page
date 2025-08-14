@@ -26,7 +26,7 @@ export const useCrownMe = () => {
       setError(null);
       setSuccess(false);
       
-      const apiBaseUrl = 'http://54.224.195.91:3007';
+      const apiBaseUrl = 'https://64mnuls3p1.execute-api.us-east-1.amazonaws.com/dev/proxy';
       if (!apiBaseUrl) {
         throw new Error('API base URL not configured');
       }
