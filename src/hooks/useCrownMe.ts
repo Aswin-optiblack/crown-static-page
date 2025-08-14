@@ -26,7 +26,7 @@ export const useCrownMe = () => {
       setError(null);
       setSuccess(false);
       
-      const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+      const apiBaseUrl = 'http://54.224.195.91:3007';
       if (!apiBaseUrl) {
         throw new Error('API base URL not configured');
       }
