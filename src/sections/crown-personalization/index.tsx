@@ -111,7 +111,7 @@ export default function CrownPersonalization({ userName }: CrownPersonalizationP
         }
       `}</style>
     <section 
-      className="py-16 flex flex-col gap-5 px-4 sm:px-6 md:px-10 rounded-3xl my-20 mt-24 border-2 border-[#F8A80D] bg-[#E8E0EF]">
+      className="py-16 flex flex-col gap-5 px-4 sm:px-6 md:px-10 rounded-3xl md:my-20 my-10 md:mt-24 mt-14 border-2 border-[#F8A80D] bg-[#E8E0EF]">
       <div className="text-center mx-auto flex flex-col items-center mb-5">
         <h2 className="block text-2xl sm:text-3xl lg:text-[42px] font-[700] font-jakarta text-[#2C1D39] py-4">
           Pick a Crown & Make It Personal ✨
@@ -143,7 +143,7 @@ export default function CrownPersonalization({ userName }: CrownPersonalizationP
               </div>
             ))
           ) : categoriesError ? (
-            <div className="flex items-center justify-center p-4 text-red-600 bg-red-50 rounded-lg">
+            <div className="flex items-center justify-center p-4 text-red-600 bg-red-50 rounded-lg w-full">
               <p>Error loading categories: {categoriesError}</p>
             </div>
           ) : (
@@ -151,12 +151,12 @@ export default function CrownPersonalization({ userName }: CrownPersonalizationP
               <div 
                 key={category._id}
                 onClick={() => handleCardClick(index, category._id)}
-                className={`h-[120px] sm:h-[135px] lg:h-[150px] w-[100px] sm:w-[120px] lg:w-[140px] xl:w-auto flex-shrink-0 rounded-[20px] sm:rounded-[28px] lg:rounded-[35px] shadow-md flex flex-col items-center justify-center cursor-pointer transition-all duration-200 relative`}
+                className={`sm:h-[135px] lg:h-[150px] w-[100px] sm:w-[120px] lg:w-[140px] xl:w-auto flex-shrink-0 rounded-[20px] sm:rounded-[28px] lg:rounded-[35px] shadow-md flex flex-col items-center justify-center cursor-pointer transition-all duration-200 relative`}
                 style={{
                   background: selectedCard === index 
                     ? `linear-gradient(0deg, #FFFFFF, #FFFFFF), linear-gradient(145.96deg, rgba(255, 206, 0, 0.04) -7.2%, rgba(239, 37, 138, 0.04) 51.64%, rgba(118, 80, 255, 0.04) 118.33%), linear-gradient(0deg, #FFFAF1, #FFFAF1), linear-gradient(145.96deg, rgba(255, 206, 0, 0.08) -7.2%, rgba(239, 37, 138, 0.08) 51.64%, rgba(118, 80, 255, 0.08) 118.33%)`
                     : '#ffffff',
-                  border: selectedCard === index ? '8px solid transparent' : 'none',
+                  border: selectedCard === index ? '6px solid transparent' : 'none',
                   backgroundImage: selectedCard === index ? 'linear-gradient(white, white), linear-gradient(93.04deg, rgba(112, 36, 180, 0.8) 12.7%, rgba(248, 168, 13, 0.8) 108.9%)' : 'none',
                   backgroundOrigin: selectedCard === index ? 'border-box' : 'initial',
                   backgroundClip: selectedCard === index ? 'content-box, border-box' : 'initial'
@@ -173,7 +173,7 @@ export default function CrownPersonalization({ userName }: CrownPersonalizationP
       </div>
 
       <div className="flex flex-col gap-6 items-center justify-center my-5 mx-auto">
-        <div className="flex items-center gap-4 self-end">
+        {/* <div className="flex items-center gap-4 self-end">
           <h4 className="text-[#2C1D39] text-lg sm:text-xl lg:text-[30px]">Card view</h4>
           <div 
             onClick={() => setIsCardViewOn(!isCardViewOn)}
@@ -183,7 +183,7 @@ export default function CrownPersonalization({ userName }: CrownPersonalizationP
           >
             <div className="w-[27px] sm:w-[32px] lg:w-[37px] h-[27px] sm:h-[32px] lg:h-[37px] bg-white rounded-full shadow-md"></div>
           </div>
-        </div>
+        </div> */}
         <div
           className="rounded-4xl flex flex-col items-center justify-center gap-4 relative w-full min-w-[280px] max-w-[320px] sm:min-w-[400px] sm:max-w-[480px] lg:min-w-[500px] lg:max-w-[600px] xl:min-w-[600px] xl:max-w-[720px]"
           style={{

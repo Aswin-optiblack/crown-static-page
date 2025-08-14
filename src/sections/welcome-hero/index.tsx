@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 
 const WelcomeHero = () => {
   const pathname = usePathname();
-  const isCrownPage = pathname === "/crown";
+  const isCrownPage = pathname === "/crown-me";
 
   return (
     <div className="relative flex flex-col items-center justify-center md:pt-20 md:mb-10 pt-12 mb-6 text-[#F7F5FA]">
