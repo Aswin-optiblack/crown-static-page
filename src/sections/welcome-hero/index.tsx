@@ -2,7 +2,11 @@
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 
-const WelcomeHero = () => {
+interface WelcomeHeroProps {
+  userName?: string;
+}
+
+const WelcomeHero = ({ userName }: WelcomeHeroProps) => {
   const pathname = usePathname();
   const isCrownPage = pathname === "/crown-me";
 
@@ -17,7 +21,7 @@ const WelcomeHero = () => {
         priority
       />
       <h1 className="font-jakarta font-[800] md:text-6xl text-4xl z-50 text-center">
-        {isCrownPage ? "Crown (sender's name) and Appreciate their personality" : "You've Been Crowned!"}
+        {isCrownPage ? `Crown (${userName ? userName: "sender's name"}) and Appreciate their personality` : "You've Been Crowned!"}
       </h1>
       <p className="font-sans font-[600] md:text-3xl text-2xl md:w-[800px] text-center md:pt-10 pt-5 leading-[40px] z-50">
         {isCrownPage 

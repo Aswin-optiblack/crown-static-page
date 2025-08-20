@@ -1,12 +1,13 @@
 "use client";
 
-import CrownMeContent from "@/components/CrownMeContent";
-import { Suspense } from "react";
+import LoadingSpinner from "@/components/LoadingSpinner";
+import { Suspense, lazy } from "react";
 
+const CrownMeContent = lazy(() => import("@/components/CrownMeContent"));
 
 export default function CrownMePage() {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<LoadingSpinner />}>
       <CrownMeContent />
     </Suspense>
   );
