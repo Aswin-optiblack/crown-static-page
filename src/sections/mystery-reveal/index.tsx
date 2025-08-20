@@ -1,4 +1,6 @@
+"use client";
 import Image from "next/image";
+import { APP_STORE_URLS } from "@/constants/appUrls";
 
 const index = () => {
   return (
@@ -18,7 +20,10 @@ const index = () => {
           </p>
           <div className="flex items-center justify-center w-full">
             <div className="mt-4 flex md:flex-row flex-col gap-5 items-center justify-center ">
-              <button className=" bg-black text-white px-4 py-1 rounded-xl border-2 border-[#BDBDBD]  flex items-center justify-center gap-2">
+              <button 
+                onClick={() => window.open(APP_STORE_URLS.IOS, '_blank')}
+                className=" bg-black text-white px-4 py-1 rounded-xl border-2 border-[#BDBDBD]  flex items-center justify-center gap-2 hover:bg-gray-800 transition-colors cursor-pointer"
+              >
                 <Image
                   src="/assets/apple.svg"
                   alt="Apple App Store icon"
@@ -33,7 +38,10 @@ const index = () => {
                   <span className=" font-bold text-lg ">App Store</span>
                 </div>
               </button>
-              <button className=" bg-black text-white px-4 py-1 rounded-xl border-2 border-[#BDBDBD]  flex items-center justify-center gap-2">
+              <button 
+                onClick={() => window.open(APP_STORE_URLS.ANDROID, '_blank')}
+                className=" bg-black text-white px-4 py-1 rounded-xl border-2 border-[#BDBDBD]  flex items-center justify-center gap-2 hover:bg-gray-800 transition-colors cursor-pointer"
+              >
                 <Image
                   src="/assets/playstore.svg"
                   alt="Google Play Store icon"
