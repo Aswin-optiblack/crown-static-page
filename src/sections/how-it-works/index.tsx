@@ -3,7 +3,7 @@ import Card from "@/components/FeatureCard";
 
 const index = () => {
   return (
-    <div id="section-three" className="md:my-20 my-5 p-10 grid md:grid-cols-2 grid-cols-1 gap-4 md:mt-[150px] mt-0 bg-[#FFFBEE] relative">
+    <div id="section-three" className="md:my-20 my-5 p-10 grid md:grid-cols-2 grid-cols-1 gap-4 md:mt-[150px] mt-0 bg-[#FFFBEE] relative ">
       <div className="flex flex-col items-start justify-center gap-6  text-start">
         <h3 className="md:text-4xl text-2xl font-jakarta font-[700] text-[#2C1D39] text-start">
           📲 Get the Crowned App to reveal your crown
@@ -22,18 +22,18 @@ const index = () => {
       <Image
         src="/assets/gold_star.svg"
         alt="Gold star decoration"
-        width={20}
-        height={20}
-        className="absolute top-1/12 left-1/12"
+        width={25}
+        height={25}
+        className="absolute top-1/12 left-1/4"
         loading="lazy"
       />
 
       <Image
         src="/assets/gold_star.svg"
         alt="Gold star decoration"
-        width={10}
-        height={10}
-        className="absolute bottom-1/12 left-1/12"
+        width={28}
+        height={28}
+        className="absolute bottom-1/5 left-1/12"
         loading="lazy"
       />
 
@@ -42,7 +42,16 @@ const index = () => {
         alt="Gold star decoration"
         width={15}
         height={15}
-        className="absolute bottom-10 left-1/3"
+        className="absolute bottom-10 left-[47%]"
+        loading="lazy"
+      />
+
+       <Image
+        src="/assets/gold_star.svg"
+        alt="Gold star decoration"
+        width={15}
+        height={15}
+        className="absolute right-5 top-[47%]"
         loading="lazy"
       />
     </div>
