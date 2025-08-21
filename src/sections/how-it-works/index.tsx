@@ -3,7 +3,7 @@ import Card from "@/components/FeatureCard";
 
 const index = () => {
   return (
-    <div id="section-three" className="my-20 p-10 grid md:grid-cols-2 grid-cols-1 gap-4 mt-[150px] bg-[#FFFBEE] relative">
+    <div id="section-three" className="md:my-20 my-5 p-10 grid md:grid-cols-2 grid-cols-1 gap-4 md:mt-[150px] mt-0 bg-[#FFFBEE] relative">
       <div className="flex flex-col items-start justify-center gap-6  text-start">
         <h3 className="md:text-4xl text-2xl font-jakarta font-[700] text-[#2C1D39] text-start">
           📲 Get the Crowned App to reveal your crown
