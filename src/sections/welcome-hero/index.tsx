@@ -40,7 +40,7 @@ const WelcomeHero = ({ userName }: WelcomeHeroProps) => {
           loading="lazy"
         />
       </div>
-      <div className="absolute right-0 bottom-0 transform rotate-[0deg] md:block hidden">
+      <div className="absolute right-0  -bottom-14  transform rotate-[0deg] md:block hidden">
         <Image
           src="/assets/fifth_section_coin.svg"
           className="md:h-[150px] h-[100px] z-10"
