@@ -31,7 +31,7 @@ export default function CrownMeContent() {
   return (
     <div className="container">
       <WelcomeHero userName={userName} fullName={fullName} />
-      <CrownPersonalization userName={userName} />
+      <CrownPersonalization userName={userName} fullName={fullName} />
       <HowItWorks />
       <AppDownload />
     </div>

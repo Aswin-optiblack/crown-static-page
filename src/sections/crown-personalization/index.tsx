@@ -10,9 +10,10 @@ import Toast from "@/components/Toast";
 
 interface CrownPersonalizationProps {
   userName?: string;
+  fullName?: string;
 }
 
-export default function CrownPersonalization({ userName }: CrownPersonalizationProps) {
+export default function CrownPersonalization({ userName, fullName }: CrownPersonalizationProps) {
   const [selectedCard, setSelectedCard] = useState(0);
   const [isCardViewOn, setIsCardViewOn] = useState(true);
   const [selectedCategoryId, setSelectedCategoryId] = useState<string>("");
@@ -117,7 +118,7 @@ export default function CrownPersonalization({ userName }: CrownPersonalizationP
           Pick a Crown & Make It Personal ✨
         </h2>
         <p className="text-[#583A73] text-lg sm:text-xl lg:text-[30px] font-sans w-[95%] sm:w-[85%] lg:w-[75%] text-center">
-          Celebrate [Sender Name] for what they truly deserve! Choose a category
+          Celebrate [{fullName ? fullName : userName ? userName : "sender's name"}] for what they truly deserve! Choose a category
           that fits them best, then pick a prompt (or shuffle for more) to make
           their crown extra special.
         </p>
