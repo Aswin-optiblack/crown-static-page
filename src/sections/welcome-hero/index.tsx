@@ -4,9 +4,10 @@ import { usePathname } from "next/navigation";
 
 interface WelcomeHeroProps {
   userName?: string;
+  fullName?: string;
 }
 
-const WelcomeHero = ({ userName }: WelcomeHeroProps) => {
+const WelcomeHero = ({ userName, fullName }: WelcomeHeroProps) => {
   const pathname = usePathname();
   const isCrownPage = pathname === "/crown-me";
 
@@ -21,7 +22,7 @@ const WelcomeHero = ({ userName }: WelcomeHeroProps) => {
         priority
       />
       <h1 className="font-jakarta font-[800] md:text-6xl sm:text-4xl text-3xl z-50 text-center max-w-4xl leading-tight">
-        {isCrownPage ? `Crown (${userName ? userName: "sender's name"}) and Appreciate their personality` : "You've Been Crowned!"}
+            {isCrownPage ? `Crown (${fullName ? fullName : userName ? userName : "sender's name"}) and Appreciate their personality` : "You've Been Crowned!"}
       </h1>
       <p className="font-sans font-[600] md:text-3xl sm:text-xl text-lg max-w-5xl w-full text-center md:pt-10 sm:pt-6 pt-4 md:leading-[40px] sm:leading-8 leading-7 z-50 px-2">
         {isCrownPage 

@@ -11,15 +11,18 @@ export default function CrownMeContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const [userName, setUserName] = useState("");
+  const [fullName, setFullName] = useState("");
 
   useEffect(() => {
     const userParam = searchParams.get("user");
+    const fullNameParam = searchParams.get("fullName");
 
     if (!userParam) {
       router.push("/");
       return;
     }
 
+    setFullName(fullNameParam || "");
     setUserName(userParam);
   }, [searchParams, router]);
 
@@ -27,7 +30,7 @@ export default function CrownMeContent() {
 
   return (
     <div className="container">
-      <WelcomeHero userName={userName} />
+      <WelcomeHero userName={userName} fullName={fullName} />
       <CrownPersonalization userName={userName} />
       <HowItWorks />
       <AppDownload />
