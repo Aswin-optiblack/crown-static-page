@@ -1,10 +1,19 @@
 import { useState, useCallback } from 'react';
 import axios from 'axios';
+import { IPLocationResponse } from '@/utils/ipDetection';
 
 interface CrownMeRequest {
   category: string;
   prompt: string;
   userName: string;
+  ip?: string;
+  location?: {
+    country?: string;
+    region?: string;
+    city?: string;
+    latitude?: number;
+    longitude?: number;
+  };
 }
 
 interface CrownMeResponse {
@@ -20,7 +29,7 @@ export const useCrownMe = () => {
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
 
-  const sendCrown = useCallback(async (requestData: CrownMeRequest) => {
+  const sendCrown = useCallback(async (requestData: CrownMeRequest, userLocationData?: IPLocationResponse | null) => {
     try {
       setLoading(true);
       setError(null);
@@ -31,9 +40,23 @@ export const useCrownMe = () => {
         throw new Error('API base URL not configured');
       }
 
+      // Include IP and location only if BOTH IP and meaningful location data are available
+      let requestWithLocationData = { ...requestData };
+      
+      if (userLocationData?.ip && 
+          userLocationData.location && 
+          (userLocationData.location.country || userLocationData.location.city)) {
+        requestWithLocationData = {
+          ...requestData,
+          ip: userLocationData.ip,
+          location: userLocationData.location
+        };
+      }
+      // If we don't have both IP and location, don't send either
+
       const response = await axios.post<CrownMeResponse>(
         `${apiBaseUrl}/api/crowns/crown-me`,
-        requestData,
+        requestWithLocationData,
         {
           headers: {
             'Content-Type': 'application/json',

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
+import { getIPAndLocationSafely, IPLocationResponse } from "@/utils/ipDetection";
 import WelcomeHero from "@/sections/welcome-hero";
 import HowItWorks from "@/sections/how-it-works";
 import AppDownload from "@/sections/app-download";
@@ -12,6 +13,7 @@ export default function CrownMeContent() {
   const router = useRouter();
   const [userName, setUserName] = useState("");
   const [fullName, setFullName] = useState("");
+  const [userLocationData, setUserLocationData] = useState<IPLocationResponse | null>(null);
 
   useEffect(() => {
     const userParam = searchParams.get("user");
@@ -24,6 +26,13 @@ export default function CrownMeContent() {
 
     setFullName(fullNameParam || "");
     setUserName(userParam);
+    
+    const fetchUserLocationData = async () => {
+      const locationData = await getIPAndLocationSafely();
+      setUserLocationData(locationData);
+    };
+    
+    fetchUserLocationData();
   }, [searchParams, router]);
 
   if (!userName) return null;
@@ -31,7 +40,7 @@ export default function CrownMeContent() {
   return (
     <div className="container">
       <WelcomeHero userName={userName} fullName={fullName} />
-      <CrownPersonalization userName={userName} fullName={fullName} />
+      <CrownPersonalization userName={userName} fullName={fullName} userLocationData={userLocationData} />
       <HowItWorks />
       <AppDownload />
     </div>
