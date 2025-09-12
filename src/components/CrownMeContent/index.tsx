@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
-import { getIPAndLocationSafely, IPLocationResponse } from "@/utils/ipDetection";
+import { getCompleteIPData, CompleteIPData } from "@/utils/ipDetection";
 import WelcomeHero from "@/sections/welcome-hero";
 import HowItWorks from "@/sections/how-it-works";
 import AppDownload from "@/sections/app-download";
@@ -13,7 +13,7 @@ export default function CrownMeContent() {
   const router = useRouter();
   const [userName, setUserName] = useState("");
   const [fullName, setFullName] = useState("");
-  const [userLocationData, setUserLocationData] = useState<IPLocationResponse | null>(null);
+  const [completeIPData, setCompleteIPData] = useState<CompleteIPData | null>(null);
 
   useEffect(() => {
     const userParam = searchParams.get("user");
@@ -27,12 +27,12 @@ export default function CrownMeContent() {
     setFullName(fullNameParam || "");
     setUserName(userParam);
     
-    const fetchUserLocationData = async () => {
-      const locationData = await getIPAndLocationSafely();
-      setUserLocationData(locationData);
+    const fetchCompleteIPData = async () => {
+      const ipData = await getCompleteIPData();
+      setCompleteIPData(ipData);
     };
     
-    fetchUserLocationData();
+    fetchCompleteIPData();
   }, [searchParams, router]);
 
   if (!userName) return null;
@@ -40,7 +40,7 @@ export default function CrownMeContent() {
   return (
     <div className="container">
       <WelcomeHero userName={userName} fullName={fullName} />
-      <CrownPersonalization userName={userName} fullName={fullName} userLocationData={userLocationData} />
+      <CrownPersonalization userName={userName} fullName={fullName} completeIPData={completeIPData} />
       <HowItWorks />
       <AppDownload />
     </div>

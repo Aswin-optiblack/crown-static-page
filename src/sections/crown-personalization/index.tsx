@@ -5,17 +5,17 @@ import { useState, useEffect } from "react";
 import { useCategories } from "@/hooks/useCategories";
 import { usePrompts } from "@/hooks/usePrompts";
 import { useCrownMe } from "@/hooks/useCrownMe";
-import { IPLocationResponse } from "@/utils/ipDetection";
+import { CompleteIPData } from "@/utils/ipDetection";
 import SuccessModal from "@/components/SuccessModal";
 import Toast from "@/components/Toast";
 
 interface CrownPersonalizationProps {
   userName?: string;
   fullName?: string;
-  userLocationData?: IPLocationResponse | null;
+  completeIPData?: CompleteIPData | null;
 }
 
-export default function CrownPersonalization({ userName, fullName, userLocationData }: CrownPersonalizationProps) {
+export default function CrownPersonalization({ userName, fullName, completeIPData }: CrownPersonalizationProps) {
   const [selectedCard, setSelectedCard] = useState(0);
   const [isCardViewOn, setIsCardViewOn] = useState(true);
   const [selectedCategoryId, setSelectedCategoryId] = useState<string>("");
@@ -77,7 +77,7 @@ export default function CrownPersonalization({ userName, fullName, userLocationD
         category: selectedCategoryId,
         prompt: promptId,
         userName: userName
-      }, userLocationData);
+      }, completeIPData);
       setShowSuccessModal(true);
     } catch (error) {
       setErrorMessage(error instanceof Error ? error.message : 'Failed to send crown');
