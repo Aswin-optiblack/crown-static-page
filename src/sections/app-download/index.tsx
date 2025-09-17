@@ -2,7 +2,12 @@
 import Image from "next/image";
 import { APP_STORE_URLS } from "@/constants/appUrls";
 
-const index = () => {
+interface AppDownloadProps {
+  userName?: string;
+  fullName?: string;
+}
+
+const index = ({ userName, fullName }: AppDownloadProps = {}) => {
   return (
     <div className="md:mt-20 mt-12 mb-5 border-4 border-[#F8A80D] rounded-2xl md:p-10 p-6 bg-[#E8E0EF] w-full relative">
       <div
@@ -10,12 +15,11 @@ const index = () => {
         className="flex md:flex-row flex-col items-center md:justify-between justify-center gap-8 md:gap-4"
       >
         <div className="md:pl-4 md:w-[500px] w-full">
-          <h1 className="md:text-5xl sm:text-4xl text-3xl font-[700] text-[#181D27] font-jakarta md:text-start text-center z-50 leading-tight">
-            🔓 Want to find out who crowned you?
+          <h1 className="md:text-5xl sm:text-4xl text-3xl font-[700] text-[#2C1D39] font-jakarta md:text-start text-center z-50 leading-tight">
+            Your Turn to Shine ✨
           </h1>
-          <p className="my-5 text-[#535862] font-sans font-[400] md:text-xl sm:text-lg text-base md:text-start text-center z-50 leading-relaxed">
-            Get hints, reveal names, earn XP, and unlock even more once you&apos;re
-            inside the app. Because every crown has a story.
+          <p className="my-5 text-[#212121] font-sans font-[400] md:text-xl sm:text-lg text-base md:text-start text-center z-50 leading-relaxed">
+            After crowning {fullName || userName || "Sender Name"}, download Crowned to get crowned yourself, build streaks, and see who&apos;s hyping you up.
           </p>
           <div className="flex items-center justify-center md:justify-start">
             <div className="mt-4 flex md:flex-row flex-col gap-4 md:gap-4 items-center justify-center w-full md:w-auto">

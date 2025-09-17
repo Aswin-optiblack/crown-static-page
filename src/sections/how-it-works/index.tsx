@@ -3,13 +3,13 @@ import Card from "@/components/FeatureCard";
 
 const index = () => {
   return (
-    <div id="section-three" className="md:my-20 my-5 p-10 grid md:grid-cols-2 grid-cols-1 gap-4 md:mt-[150px] mt-0 bg-[#FFFBEE] relative ">
-      <div className="flex flex-col items-start justify-center gap-6  text-start">
-        <h3 className="md:text-4xl text-2xl font-jakarta font-[700] text-[#2C1D39] text-start">
-          📲 Get the Crowned App to reveal your crown
+    <div id="section-three" className=" p-20 grid md:grid-cols-2 grid-cols-1 gap-4  mt-0 relative ">
+      <div className="flex flex-col items-start justify-center gap-6  text-start max-w-2xl ">
+        <h3 className="md:text-4xl text-2xl font-jakarta font-[700] text-white text-start">
+          Spread the Love Anytime 📲
         </h3>
-        <p className="text-[#545B5B] font-sans font-[700] md:text-2xl text-xl md:mt-6 mb-5 md:mb-0">
-          You’ve been crowned — now it’s your move. Heres how it works:
+        <p className="text-white font-sans font-[700] md:text-2xl text-xl md:mt-6 mb-5 md:mb-0">
+          On Crowned, you can hype up your friends, give flowers publicly, and start crown chains that go viral. Download the app to keep the good vibes going.
         </p>
       </div>
       <div className="relative flex items-center justify-center flex-col basis-full gap-8 bg-gradient-to-tl from-[#583A73] to-[#8459AB] px-6 py-12 rounded-lg">

@@ -20,6 +20,12 @@ body {
   padding: 0 4%;
 }
 
+.container-box {
+  margin: 0 auto;
+  padding: 0 4%;
+  background: transparent;
+}
+
 @media (max-width: 768px) {
   .container {
     padding: 0 2%;

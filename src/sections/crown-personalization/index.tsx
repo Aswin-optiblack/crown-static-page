@@ -8,14 +8,17 @@ import { useCrownMe } from "@/hooks/useCrownMe";
 import { CompleteIPData } from "@/utils/ipDetection";
 import SuccessModal from "@/components/SuccessModal";
 import Toast from "@/components/Toast";
+import { ArrowLeft } from "lucide-react";
 
 interface CrownPersonalizationProps {
   userName?: string;
   fullName?: string;
   completeIPData?: CompleteIPData | null;
+  onSuccess?: () => void;
+  onBack?: () => void;
 }
 
-export default function CrownPersonalization({ userName, fullName, completeIPData }: CrownPersonalizationProps) {
+export default function CrownPersonalization({ userName, fullName, completeIPData, onSuccess, onBack }: CrownPersonalizationProps) {
   const [selectedCard, setSelectedCard] = useState(0);
   const [isCardViewOn, setIsCardViewOn] = useState(true);
   const [selectedCategoryId, setSelectedCategoryId] = useState<string>("");
@@ -78,7 +81,11 @@ export default function CrownPersonalization({ userName, fullName, completeIPDat
         prompt: promptId,
         userName: userName
       }, completeIPData);
-      setShowSuccessModal(true);
+      if (onSuccess) {
+        onSuccess();
+      } else {
+        setShowSuccessModal(true);
+      }
     } catch (error) {
       setErrorMessage(error instanceof Error ? error.message : 'Failed to send crown');
       setShowErrorToast(true);
@@ -113,16 +120,34 @@ export default function CrownPersonalization({ userName, fullName, completeIPDat
           background: #6B7280;
         }
       `}</style>
-    <section 
-      className="py-16 flex flex-col gap-5 px-4 sm:px-6 md:px-10 rounded-3xl md:my-20 my-10 md:mt-24 mt-14 border-2 border-[#F8A80D] bg-[#E8E0EF]">
-      <div className="text-center mx-auto flex flex-col items-center mb-5">
-        <h2 className="block text-2xl sm:text-3xl lg:text-[42px] font-[700] font-jakarta text-[#2C1D39] py-4">
+    <section
+      className="relative py-16 flex flex-col gap-5 px-4 sm:px-6 md:px-10 rounded-3xl  bg-cover bg-center bg-no-repeat"
+      style={{
+        backgroundImage: `url('/assets/background-2.png')`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}>
+      {/* Glass effect overlay */}
+      <div className="absolute inset-0 bg-white/10 backdrop-blur-3xl rounded-3xl"></div>
+      {/* Content wrapper */}
+      <div className="relative z-10 flex flex-col gap-5">
+      <div className="text-center mx-auto flex flex-col items-center mb-5 relative">
+        {/* Back Button */}
+        {onBack && (
+          <button
+            onClick={onBack}
+            className="absolute left-0 top-4 w-[60px] h-[60px]  cursor-pointer bg-black/30 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-black/70 transition-all duration-200"
+          >
+            <ArrowLeft size={30} color="white" />
+          </button>
+        )}
+
+        <h2 className="block text-2xl sm:text-3xl lg:text-[42px] font-[700] font-jakarta text-white py-4">
           Pick a Crown & Make It Personal ✨
         </h2>
-        <p className="text-[#583A73] text-lg sm:text-xl lg:text-[30px] font-sans w-[95%] sm:w-[85%] lg:w-[75%] text-center">
-          Celebrate [{fullName ? fullName : userName ? userName : "sender's name"}] for what they truly deserve! Choose a category
-          that fits them best, then pick a prompt (or shuffle for more) to make
-          their crown extra special.
+        <p className="text-white text-lg sm:text-xl lg:text-[30px] font-sans w-[95%] sm:w-[85%] lg:w-[75%] text-center">
+          Celebrate [{fullName ? fullName : userName ? userName : "sender's name"}] right! Pick a category & prompt (or shuffle) to make their crown shine.
         </p>
       </div>
       <div 
@@ -196,7 +221,7 @@ export default function CrownPersonalization({ userName, fullName, completeIPDat
             backgroundClip: 'content-box, border-box'
           }}
         >
-          <div className="bg-white rounded-3xl py-6 sm:py-8 lg:py-12 px-4 sm:px-8 lg:px-28 flex flex-col items-center justify-center gap-4 w-full h-full min-h-[200px] sm:min-h-[220px] lg:min-h-[250px]">
+          <div className="bg-white/95 backdrop-blur-sm rounded-3xl py-6 sm:py-8 lg:py-12 px-4 sm:px-8 lg:px-28 flex flex-col items-center justify-center gap-4 w-full h-full min-h-[200px] sm:min-h-[220px] lg:min-h-[250px]">
             {loadingPrompts ? (
               <div className="flex flex-col items-center justify-center gap-4">
                 <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#583A73]"></div>
@@ -212,49 +237,41 @@ export default function CrownPersonalization({ userName, fullName, completeIPDat
               </p>
             )}
 
-            <div
-              style={{
-                border: '3px solid transparent',
-                backgroundImage: 'linear-gradient(#E8E0EF, #E8E0EF), linear-gradient(286.17deg, #583A73 0%, #8459AB 100%)',
-                backgroundOrigin: 'border-box',
-                backgroundClip: 'content-box, border-box',
-                borderRadius: '9999px'
-              }}
-              className="my-5"
+            <button
+              onClick={shufflePrompt}
+              disabled={loadingPrompts || !currentPrompt}
+              className="my-5 cursor-pointer flex gap-2 sm:gap-4 font-sans font-[700] text-lg sm:text-xl lg:text-2xl rounded-full items-center justify-center py-3 sm:py-4 px-6 sm:px-8 lg:px-12 text-white bg-gradient-to-r from-[#8459AB] to-[#583A73] w-full disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              <button 
-                onClick={shufflePrompt}
-                disabled={loadingPrompts || !currentPrompt}
-                className="cursor-pointer flex gap-2 sm:gap-4 font-sans font-[700] text-lg sm:text-xl lg:text-2xl rounded-full items-center justify-between py-3 sm:py-4 px-6 sm:px-8 lg:px-12 text-[#583A73] bg-[#E8E0EF] w-full disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                Shuffle Prompt
-                <Image
-                  src="/assets/refresh.svg"
-                  alt="Refresh Icon"
-                  width={20}
-                  height={20}
-                  className="sm:w-[25px] sm:h-[25px]"
-                />
-              </button>
-            </div>
+              Shuffle Prompt
+              <Image
+                src="/assets/refresh.svg"
+                alt="Refresh Icon"
+                width={20}
+                height={20}
+                className="sm:w-[25px] sm:h-[25px] filter brightness-0 invert"
+              />
+            </button>
           </div>
         </div>
-        <div className="w-full max-w-[350px]">
-          <button 
+        <div className="w-full max-w-md">
+          <button
             onClick={handleSendCrown}
             disabled={sendingCrown || !userName || !selectedCategoryId || !getCurrentPromptId()}
-            className="text-white font-jakarta font-[700] text-xl sm:text-2xl lg:text-[32px] bg-gradient-to-r from-[#8459AB] to-[#583A73] rounded-full py-3 sm:py-4 px-8 sm:px-10 cursor-pointer w-full disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+            className="my-8 w-full max-w-md font-[800] text-2xl bg-gradient-to-r from-[#7024B4] to-[#F8A80D] text-white font-jakarta rounded-full p-1 disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {sendingCrown ? (
-              <>
-                <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
-                Sending...
-              </>
-            ) : (
-              'Send'
-            )}
+            <span className="flex w-full items-center justify-center cursor-pointer hover:opacity-90 transition-all bg-gradient-to-tl from-purple-600 via-[#EF258A] to-orange-400 text-white rounded-full max-w-md px-16 py-4">
+              {sendingCrown ? (
+                <>
+                  <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                  Sending...
+                </>
+              ) : (
+                'Send'
+              )}
+            </span>
           </button>
         </div>
+      </div>
       </div>
     </section>
 
