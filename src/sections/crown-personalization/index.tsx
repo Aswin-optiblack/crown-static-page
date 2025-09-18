@@ -120,8 +120,21 @@ export default function CrownPersonalization({ userName, fullName, completeIPDat
           background: #6B7280;
         }
       `}</style>
+
+      {/* Mobile Back Button - Above entire glass card */}
+      {onBack && (
+        <div className="flex justify-start mb-4 sm:hidden">
+          <button
+            onClick={onBack}
+            className="w-[60px] h-[60px] cursor-pointer bg-black/30 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-black/70 transition-all duration-200"
+          >
+            <ArrowLeft size={30} color="white" />
+          </button>
+        </div>
+      )}
+
     <section
-      className="relative py-16 flex flex-col gap-5 px-4 sm:px-6 md:px-10 rounded-3xl  bg-cover bg-center bg-no-repeat"
+      className="relative py-8 sm:py-16 flex flex-col gap-5 px-4 sm:px-6 md:px-10 rounded-3xl  bg-cover bg-center bg-no-repeat"
       style={{
         backgroundImage: `url('/assets/background-2.png')`,
         backgroundSize: "cover",
@@ -133,11 +146,11 @@ export default function CrownPersonalization({ userName, fullName, completeIPDat
       {/* Content wrapper */}
       <div className="relative z-10 flex flex-col gap-5">
       <div className="text-center mx-auto flex flex-col items-center mb-5 relative">
-        {/* Back Button */}
+        {/* Desktop Back Button */}
         {onBack && (
           <button
             onClick={onBack}
-            className="absolute left-0 top-4 w-[60px] h-[60px]  cursor-pointer bg-black/30 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-black/70 transition-all duration-200"
+            className="hidden sm:flex absolute left-0 top-4 w-[60px] h-[60px] cursor-pointer bg-black/30 backdrop-blur-sm rounded-full items-center justify-center hover:bg-black/70 transition-all duration-200"
           >
             <ArrowLeft size={30} color="white" />
           </button>

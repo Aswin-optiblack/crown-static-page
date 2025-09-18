@@ -75,8 +75,8 @@ export default function CrownMeContent() {
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
-          paddingTop: '80px',
-          paddingBottom: '80px',
+          paddingTop: '40px',
+          paddingBottom: '40px',
         }}>
           <CrownPersonalization
             userName={userName}

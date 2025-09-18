@@ -11,13 +11,22 @@ interface WelcomeHeroProps {
   onDownloadClick?: () => void;
 }
 
-const WelcomeHero = ({ userName, fullName, onCrownThemClick, showSuccess, onCloseSuccess, onDownloadClick }: WelcomeHeroProps) => {
+const WelcomeHero = ({
+  userName,
+  fullName,
+  onCrownThemClick,
+  showSuccess,
+  onCloseSuccess,
+  onDownloadClick,
+}: WelcomeHeroProps) => {
   const pathname = usePathname();
   const isCrownPage = pathname === "/crown-me";
 
   return (
     <div
-      className="relative w-full bg-cover bg-center bg-no-repeat pb-40 pt-5"
+      className={`relative w-full bg-cover bg-center bg-no-repeat pt-5 ${
+        showSuccess ? "min-h-screen" : "pb-20 sm:pb-40"
+      }`}
       style={{
         backgroundImage: `url('/assets/background.png')`,
         backgroundSize: "cover",
@@ -26,14 +35,18 @@ const WelcomeHero = ({ userName, fullName, onCrownThemClick, showSuccess, onClos
       }}
     >
       <div className="container flex flex-col items-center justify-center md:pt-20 md:mb-10 pt-8 mb-4 text-[#F7F5FA]">
-        <Image
-          src="/assets/crown.svg"
-          className="md:h-[200px] sm:h-[170px] h-[130px] mb-4 transform rotate-6"
-          height={200}
-          width={300}
-          alt="Golden crown logo"
-          priority
-        />
+        {!showSuccess ? (
+          <Image
+            src="/assets/crown.svg"
+            className="md:h-[200px] sm:h-[170px] h-[130px] mb-4 transform rotate-6"
+            height={200}
+            width={300}
+            alt="Golden crown logo"
+            priority
+          />
+        ) : (
+          <div className="h-[150px] sm:h-[200px]"></div>
+        )}
         {showSuccess ? (
           // Success content
           <div className="bg-gradient-to-br from-purple-50 via-orange-50 to-purple-300 rounded-3xl p-8 sm:p-12 mx-4 max-w-xl w-full shadow-2xl transform transition-all relative">
@@ -45,7 +58,7 @@ const WelcomeHero = ({ userName, fullName, onCrownThemClick, showSuccess, onClos
 
               {/* Message */}
               <p className="text-[#616161] text-lg sm:text-2xl my-6">
-                Want to keep the vibes going? Download Crowned to crown someone else — or even yourself!
+                Keep the vibe going! Download Crowned app to crown someone else — or even yourself 👑
               </p>
 
               {/* Download button */}
@@ -53,7 +66,7 @@ const WelcomeHero = ({ userName, fullName, onCrownThemClick, showSuccess, onClos
                 onClick={onDownloadClick}
                 className="cursor-pointer w-full bg-gradient-to-r from-[#8459AB] to-[#583A73] text-white font-semibold py-3 px-6 rounded-full hover:shadow-lg transition-all duration-200 mb-4"
               >
-                Download App
+                Download Crowned App
               </button>
 
               {/* Close button */}
@@ -82,7 +95,7 @@ const WelcomeHero = ({ userName, fullName, onCrownThemClick, showSuccess, onClos
               alt="Golden crown logo"
               width={100}
               height={100}
-              className='absolute w-[150px] h-[150px] sm:w-[200px] sm:h-[200px] -top-[20%] sm:-top-[30%] left-1/2 transform -translate-x-1/2 rotate-[-10deg]'
+              className="absolute w-[150px] h-[150px] sm:w-[200px] sm:h-[200px] -top-[28%] sm:-top-[30%] left-1/2 transform -translate-x-1/2 rotate-[-10deg]"
             />
           </div>
         ) : (
