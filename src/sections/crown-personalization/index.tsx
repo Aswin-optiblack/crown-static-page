@@ -20,7 +20,8 @@ interface CrownPersonalizationProps {
 
 export default function CrownPersonalization({ userName, fullName, completeIPData, onSuccess, onBack }: CrownPersonalizationProps) {
   const [selectedCard, setSelectedCard] = useState(0);
-  const [isCardViewOn, setIsCardViewOn] = useState(true);
+  const [isCardViewOn, setIsCardViewOn] = useState(false);
+  const [selectedPromptId, setSelectedPromptId] = useState<string>("");
   const [selectedCategoryId, setSelectedCategoryId] = useState<string>("");
   const [currentPromptId, setCurrentPromptId] = useState<string>("");
   const [showSuccessModal, setShowSuccessModal] = useState(false);
@@ -29,14 +30,15 @@ export default function CrownPersonalization({ userName, fullName, completeIPDat
   
   // Custom hooks for API data
   const { categories, loading: loadingCategories, error: categoriesError } = useCategories();
-  const { 
-    currentPrompt, 
+  const {
+    currentPrompt,
     prompts,
-    loading: loadingPrompts, 
-    error: promptsError, 
-    fetchPrompts, 
+    loading: loadingPrompts,
+    error: promptsError,
+    fetchPrompts,
     shufflePrompt,
-    getCurrentPromptId 
+    getCurrentPromptId,
+    setCurrentPromptManually
   } = usePrompts();
   
   const { sendCrown, loading: sendingCrown, error: crownError, success: crownSuccess } = useCrownMe();
@@ -45,6 +47,7 @@ export default function CrownPersonalization({ userName, fullName, completeIPDat
   const handleCardClick = (index: number, categoryId: string) => {
     setSelectedCard(index);
     setSelectedCategoryId(categoryId);
+    setSelectedPromptId(""); // Reset selected prompt when changing category
     fetchPrompts(categoryId);
   };
 
@@ -68,7 +71,8 @@ export default function CrownPersonalization({ userName, fullName, completeIPDat
       return;
     }
 
-    const promptId = getCurrentPromptId();
+    // Get prompt ID based on current view mode
+    const promptId = isCardViewOn ? selectedPromptId : getCurrentPromptId();
     if (!selectedCategoryId || !promptId) {
       setErrorMessage('Please select a category and prompt');
       setShowErrorToast(true);
@@ -214,62 +218,117 @@ export default function CrownPersonalization({ userName, fullName, completeIPDat
       </div>
 
       <div className="flex flex-col gap-6 items-center justify-center my-5 mx-auto">
-        {/* <div className="flex items-center gap-4 self-end">
-          <h4 className="text-[#2C1D39] text-lg sm:text-xl lg:text-[30px]">Card view</h4>
-          <div 
-            onClick={() => setIsCardViewOn(!isCardViewOn)}
+        <div className="flex items-center gap-4 self-end">
+          <h4 className="text-white text-lg sm:text-xl lg:text-[30px]">Card view</h4>
+          <div
+            onClick={() => {
+              setIsCardViewOn(!isCardViewOn);
+              // Reset selected prompt when toggling views
+              setSelectedPromptId("");
+            }}
             className={`w-[70px] sm:w-[80px] lg:w-[90px] h-[35px] sm:h-[40px] lg:h-[45px] rounded-full cursor-pointer flex items-center p-1 transition-all duration-300 ${
               isCardViewOn ? 'bg-[#AE93C8] justify-end' : 'bg-gray-300 justify-start'
             }`}
           >
             <div className="w-[27px] sm:w-[32px] lg:w-[37px] h-[27px] sm:h-[32px] lg:h-[37px] bg-white rounded-full shadow-md"></div>
           </div>
-        </div> */}
-        <div
-          className="rounded-4xl flex flex-col items-center justify-center gap-4 relative w-full min-w-[280px] max-w-[320px] sm:min-w-[400px] sm:max-w-[480px] lg:min-w-[500px] lg:max-w-[600px] xl:min-w-[600px] xl:max-w-[720px]"
-          style={{
-            border: '6px solid transparent',
-            backgroundImage: 'linear-gradient(white, white), linear-gradient(93.04deg, rgba(112, 36, 180, 0.8) 12.7%, rgba(248, 168, 13, 0.8) 108.9%)',
-            backgroundOrigin: 'border-box',
-            backgroundClip: 'content-box, border-box'
-          }}
-        >
-          <div className="bg-white/95 backdrop-blur-sm rounded-3xl py-6 sm:py-8 lg:py-12 px-4 sm:px-8 lg:px-28 flex flex-col items-center justify-center gap-4 w-full h-full min-h-[200px] sm:min-h-[220px] lg:min-h-[250px]">
+        </div>
+{!isCardViewOn ? (
+          <div
+            className="rounded-4xl flex flex-col items-center justify-center gap-4 relative w-full min-w-[280px] max-w-[320px] sm:min-w-[400px] sm:max-w-[480px] lg:min-w-[500px] lg:max-w-[600px] xl:min-w-[600px] xl:max-w-[720px]"
+            style={{
+              border: '6px solid transparent',
+              backgroundImage: 'linear-gradient(white, white), linear-gradient(93.04deg, rgba(112, 36, 180, 0.8) 12.7%, rgba(248, 168, 13, 0.8) 108.9%)',
+              backgroundOrigin: 'border-box',
+              backgroundClip: 'content-box, border-box'
+            }}
+          >
+            <div className="bg-white/95 backdrop-blur-sm rounded-3xl py-6 sm:py-8 lg:py-12 px-4 sm:px-8 lg:px-28 flex flex-col items-center justify-center gap-4 w-full h-full min-h-[200px] sm:min-h-[220px] lg:min-h-[250px]">
+              {loadingPrompts ? (
+                <div className="flex flex-col items-center justify-center gap-4">
+                  <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#583A73]"></div>
+                  <div className="w-48 h-6 bg-gray-200 rounded animate-pulse"></div>
+                </div>
+              ) : promptsError ? (
+                <div className="text-center text-red-600">
+                  <p className="font-sans font-[700] text-lg">Error: {promptsError}</p>
+                </div>
+              ) : (
+                <p className="text-[#2C1D39] font-sans font-[700] text-xl sm:text-2xl lg:text-4xl text-center leading-relaxed break-words hyphens-auto">
+                  {currentPrompt || "Select a category to see prompts"}
+                </p>
+              )}
+
+              <button
+                onClick={shufflePrompt}
+                disabled={loadingPrompts || !currentPrompt}
+                className="my-5 cursor-pointer flex gap-2 sm:gap-4 font-sans font-[700] text-lg sm:text-xl lg:text-2xl rounded-full items-center justify-center py-3 sm:py-4 px-6 sm:px-8 lg:px-12 text-white bg-gradient-to-r from-[#8459AB] to-[#583A73] w-full disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                Shuffle Prompt
+                <Image
+                  src="/assets/refresh.svg"
+                  alt="Refresh Icon"
+                  width={20}
+                  height={20}
+                  className="sm:w-[25px] sm:h-[25px] filter brightness-0 invert"
+                />
+              </button>
+            </div>
+          </div>
+        ) : (
+          <div className="w-full min-w-[280px] max-w-[320px] sm:min-w-[400px] sm:max-w-[480px] lg:min-w-[500px] lg:max-w-[600px] xl:min-w-[600px] xl:max-w-[720px] px-4">
             {loadingPrompts ? (
               <div className="flex flex-col items-center justify-center gap-4">
                 <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#583A73]"></div>
-                <div className="w-48 h-6 bg-gray-200 rounded animate-pulse"></div>
+                <p className="text-[#2C1D39]">Loading prompts...</p>
               </div>
             ) : promptsError ? (
               <div className="text-center text-red-600">
                 <p className="font-sans font-[700] text-lg">Error: {promptsError}</p>
               </div>
+            ) : prompts.length === 0 ? (
+              <div className="text-center">
+                <p className="text-[#2C1D39] font-sans font-[700] text-xl">Select a category to see prompts</p>
+              </div>
             ) : (
-              <p className="text-[#2C1D39] font-sans font-[700] text-xl sm:text-2xl lg:text-4xl text-center leading-relaxed break-words hyphens-auto">
-                {currentPrompt || "Select a category to see prompts"}
-              </p>
+              <div className="flex flex-col gap-4">
+                {prompts.map((prompt) => (
+                  <div
+                    key={prompt._id}
+                    onClick={() => {
+                      setSelectedPromptId(prompt._id);
+                      setCurrentPromptManually(prompt._id, prompt.content);
+                    }}
+                    className="cursor-pointer transition-all duration-300 rounded-[32px] relative"
+                    style={{
+                      padding: selectedPromptId === prompt._id ? '4px' : '0px',
+                      background: selectedPromptId === prompt._id
+                        ? 'linear-gradient(93.04deg, rgba(112, 36, 180, 0.8) 12.7%, rgba(248, 168, 13, 0.8) 108.9%)'
+                        : 'transparent'
+                    }}
+                  >
+                    <div
+                      className="rounded-[32px] p-6 h-full flex items-center justify-center"
+                      style={{
+                        background: selectedPromptId === prompt._id
+                          ? 'linear-gradient(to bottom, #FFFAF1, #F5F0E8, #FFFFFF)'
+                          : '#FFFFFF'
+                      }}
+                    >
+                      <p className="font-sans font-[600] text-sm sm:text-base leading-relaxed break-words text-center text-[#2C1D39]">
+                        {prompt.content}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             )}
-
-            <button
-              onClick={shufflePrompt}
-              disabled={loadingPrompts || !currentPrompt}
-              className="my-5 cursor-pointer flex gap-2 sm:gap-4 font-sans font-[700] text-lg sm:text-xl lg:text-2xl rounded-full items-center justify-center py-3 sm:py-4 px-6 sm:px-8 lg:px-12 text-white bg-gradient-to-r from-[#8459AB] to-[#583A73] w-full disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              Shuffle Prompt
-              <Image
-                src="/assets/refresh.svg"
-                alt="Refresh Icon"
-                width={20}
-                height={20}
-                className="sm:w-[25px] sm:h-[25px] filter brightness-0 invert"
-              />
-            </button>
           </div>
-        </div>
+        )}
         <div className="w-full max-w-md">
           <button
             onClick={handleSendCrown}
-            disabled={sendingCrown || !userName || !selectedCategoryId || !getCurrentPromptId()}
+            disabled={sendingCrown || !userName || !selectedCategoryId || !(isCardViewOn ? selectedPromptId : getCurrentPromptId())}
             className="my-8 w-full max-w-md font-[800] text-2xl bg-gradient-to-r from-[#7024B4] to-[#F8A80D] text-white font-jakarta rounded-full p-1 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <span className="flex w-full items-center justify-center cursor-pointer hover:opacity-90 transition-all bg-gradient-to-tl from-purple-600 via-[#EF258A] to-orange-400 text-white rounded-full max-w-md px-16 py-4">

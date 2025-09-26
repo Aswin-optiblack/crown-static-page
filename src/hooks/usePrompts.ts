@@ -109,11 +109,20 @@ export const usePrompts = () => {
     return '';
   }, [prompts, currentPromptIndex]);
 
+  const setCurrentPromptManually = useCallback((promptId: string, content: string) => {
+    const index = prompts.findIndex(prompt => prompt._id === promptId);
+    if (index >= 0) {
+      setCurrentPromptIndex(index);
+      setCurrentPrompt(content);
+    }
+  }, [prompts]);
+
   return {
     prompts,
     currentPrompt,
     currentPromptIndex,
     getCurrentPromptId,
+    setCurrentPromptManually,
     loading,
     error,
     fetchPrompts,
