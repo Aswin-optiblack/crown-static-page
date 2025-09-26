@@ -264,7 +264,7 @@ export default function CrownPersonalization({ userName, fullName, completeIPDat
                 disabled={loadingPrompts || !currentPrompt}
                 className="my-5 cursor-pointer flex gap-2 sm:gap-4 font-sans font-[700] text-lg sm:text-xl lg:text-2xl rounded-full items-center justify-center py-3 sm:py-4 px-6 sm:px-8 lg:px-12 text-white bg-gradient-to-r from-[#8459AB] to-[#583A73] w-full disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Shuffle Prompt
+                🎲 Shuffle Prompt
                 <Image
                   src="/assets/refresh.svg"
                   alt="Refresh Icon"
