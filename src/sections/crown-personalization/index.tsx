@@ -351,7 +351,7 @@ export default function CrownPersonalization({ userName, fullName, completeIPDat
     <SuccessModal 
       isOpen={showSuccessModal} 
       onClose={handleCloseSuccessModal} 
-      userName={userName}
+      userName={fullName}
     />
 
     {/* Error Toast */}
