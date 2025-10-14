@@ -1,4 +1,4 @@
 export const APP_STORE_URLS = {
-  IOS: 'https://apps.apple.com/us/app/formperfect-ai/id6742069073',
-  ANDROID: 'https://play.google.com/store/apps/details?id=com.instagram.android&hl=en_IN'
+  IOS: 'https://apps.apple.com/us/app/crowned-get-your-flowers/id6748922162',
+  ANDROID: 'https://apps.apple.com/us/app/crowned-get-your-flowers/id6748922162' // Will be updated to Play Store URL when available
 } as const;
