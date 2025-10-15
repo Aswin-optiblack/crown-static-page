@@ -6,9 +6,10 @@ interface SuccessModalProps {
   isOpen: boolean;
   onClose: () => void;
   userName?: string;
+  fullName?: string;
 }
 
-export default function SuccessModal({ isOpen, onClose, userName }: SuccessModalProps) {
+export default function SuccessModal({ isOpen, onClose, userName, fullName }: SuccessModalProps) {
   // Close modal on Escape key press
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
@@ -47,7 +48,7 @@ export default function SuccessModal({ isOpen, onClose, userName }: SuccessModal
           
           {/* Title */}
           <h3 className="text-4xl font-bold text-[#212121] mb-4">
-            🎉 Yippee! You just crowned [{userName}]!
+            🎉 Yippee! You just crowned [{fullName ?? userName ?? "sender's name"}]!
           </h3>
           
           {/* Message */}

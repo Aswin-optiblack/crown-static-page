@@ -1,9 +1,13 @@
+"use client";
 import Image from "next/image";
 import Card from "@/components/FeatureCard";
+import { usePathname } from "next/navigation";
 
-const index = () => {
+const Index = () => {
+  const pathname = usePathname();
+  const isCrownPage = pathname === "/crown-me";
   return (
-    <div id="section-three" className=" sm:p-20 p-5 sm:pt-0 pt-10 grid md:grid-cols-2 grid-cols-1 gap-8  mt-0 relative ">
+    <div id="section-three" className={` sm:p-20 p-5 sm:pt-0 pt-10 grid md:grid-cols-2 grid-cols-1 gap-8  ${isCrownPage ? "mt-0" : "mt-20"} relative `}>
       <div className="flex flex-col items-start justify-center gap-6 text-center max-w-lg mx-auto">
         <h3 className="md:text-4xl text-2xl font-jakarta font-[700] text-white text-start">
           Spread the <br /> Love Anytime📲
@@ -13,7 +17,7 @@ const index = () => {
         </p>
       </div>
       <div
-        className="relative flex items-center justify-center flex-col basis-full gap-8 px-6 py-12 rounded-lg"
+        className="relative flex items-center justify-center flex-col basis-full gap-8 px-6 py-12 mt-5 rounded-lg"
         style={{
           background: 'linear-gradient(286.17deg, rgba(251, 148, 0, 0.3) 0%, rgba(255, 171, 56, 0.3) 100%)',
           backdropFilter: 'blur(94px)'
@@ -64,4 +68,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;

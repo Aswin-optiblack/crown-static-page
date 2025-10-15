@@ -8,7 +8,7 @@ const index = () => {
       </h1>
       
       {/* Desktop Layout */}
-      <div className="hidden md:block relative h-[400px] w-full">
+      <div className="hidden md:block relative h-[400px] w-[60vw] max-w-6xl">
         <div className="absolute top-0 right-1/2 w-[200px] h-[100px] transform translate-x-1/2 rotate-3 border-8 border-[#F8A80D] rounded-2xl text-[#424242] bg-gradient-to-t from-[#d3b64c] to-[#f0deb1] flex flex-col items-start justify-start gap-2 p-8">
           <p className="font-jakarta font-extrabold text-[13px]">
             🔥 Most likely to go viral
@@ -41,7 +41,7 @@ const index = () => {
         </div>
 
         <Image
-          className="absolute -bottom-[100px] right-1/2 transform translate-x-1/2"
+          className="absolute -bottom-[20px] right-1/2 transform translate-x-1/2"
           src="/assets/crown.svg"
           alt="Golden crown logo"
           width={250}
@@ -49,7 +49,7 @@ const index = () => {
           loading="lazy"
         />
 
-        <div className="absolute -left-5 top-0 transform rotate-[-20deg]">
+        <div className="absolute -left-[10%] top-0 ">
           <Image
             src="/assets/lock.svg"
             className=""
@@ -63,8 +63,8 @@ const index = () => {
           <Image
             src="/assets/fifth_section_coin.svg"
             className=""
-            height={150}
-            width={150}
+            height={100}
+            width={100}
             alt="Gold coin decoration"
             loading="lazy"
           />

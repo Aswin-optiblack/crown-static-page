@@ -28,7 +28,7 @@ const WelcomeHero = ({
         showSuccess ? "min-h-screen" : "pb-20 sm:pb-40"
       }`}
       style={{
-        backgroundImage: `url('/assets/background.png')`,
+        backgroundImage: isCrownPage ? `url('/assets/background.png')` : `url('')`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
@@ -53,7 +53,7 @@ const WelcomeHero = ({
             <div className="text-center">
               {/* Title */}
               <h3 className="text-2xl sm:text-4xl font-bold text-[#212121] mb-4">
-                🎉 Yippee! You just crowned [{userName}]!
+                🎉 Yippee! You just crowned [{fullName}]!
               </h3>
 
               {/* Message */}
