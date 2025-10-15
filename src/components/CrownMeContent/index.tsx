@@ -17,7 +17,7 @@ export default function CrownMeContent() {
   const [userName, setUserName] = useState("");
   const [fullName, setFullName] = useState("");
   const [completeIPData, setCompleteIPData] = useState<CompleteIPData | null>(null);
-  const [currentStep, setCurrentStep] = useState<FlowStep>('success');
+  const [currentStep, setCurrentStep] = useState<FlowStep>('welcome');
 
   useEffect(() => {
     const userParam = searchParams.get("user");
