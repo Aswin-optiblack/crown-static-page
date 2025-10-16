@@ -9,7 +9,12 @@ interface AppDownloadProps {
 
 const index = ({ userName, fullName }: AppDownloadProps = {}) => {
   return (
-    <div className="md:mt-20 mt-12 mb-5 border-4 border-[#F8A80D] rounded-2xl md:p-14 md:py-20 p-6 bg-[#E8E0EF] w-full relative">
+    <div
+      className="md:mt-20 mt-12 mb-5 border-4 border-[#F8A80D] rounded-2xl md:p-14 md:py-20 p-6 w-full relative"
+      style={{
+        background: 'linear-gradient(0deg, #E8E0EF, #E8E0EF), linear-gradient(145.96deg, rgba(255, 206, 0, 0.08) -7.2%, rgba(239, 37, 138, 0.08) 51.64%, rgba(118, 80, 255, 0.08) 118.33%)'
+      }}
+    >
       <div
         id="section-one"
         className="flex md:flex-row flex-col items-center md:justify-between justify-center gap-8 md:gap-4"
