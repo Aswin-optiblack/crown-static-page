@@ -7,10 +7,18 @@ const Index = () => {
   const pathname = usePathname();
   const isCrownPage = pathname === "/crown-me";
   return (
-    <div id="section-three" className={` sm:p-20 p-5 sm:pt-0 pt-10 grid md:grid-cols-2 grid-cols-1 gap-8  ${isCrownPage ? "mt-0" : "mt-20"} relative `}>
+    <div id="section-three" className={`  p-5 sm:pt-0 pt-10 grid md:grid-cols-2 grid-cols-1 gap-8  ${isCrownPage ? "mt-0" : "mt-20"} relative `}>
       <div className="flex flex-col items-start justify-center gap-6 text-center max-w-lg mx-auto">
-        <h3 className="md:text-4xl text-2xl font-jakarta font-[700] text-white text-start">
-          Spread the <br /> Love Anytime📲
+        <Image
+        src="/assets/lock.svg"
+        className="w-[50px] h-[50px] md:my-1"
+        height={50}
+        width={50}
+        alt="Lock icon"
+        loading="lazy"
+      />
+        <h3 className="md:text-4xl text-2xl font-jakarta font-[700] text-white text-start md:leading-14 leading-10">
+          Spread the Love <br />Anytime📲
         </h3>
         <p className="text-white font-sans font-[700] md:text-2xl text-xl md:mt-6 mb-5 md:mb-0 text-start">
           On Crowned, you can hype up your friends,<br />give flowers publicly, and start crown chains<br />that go viral. Download the app to keep<br />the good vibes going.
@@ -24,26 +32,36 @@ const Index = () => {
         }}
       >
         <div className="h-[300px] w-[2px] absolute right-1/2 transform -translate-x-1/2 z-0 bg-white"></div>
-        <Card text="Someone crowns you anonymously" imageClr="#E2E3FA" imagesrc="/assets/third_section_first_icon.svg" />
-        <Card text="You open the app to see your crown" imageClr="#C1F2F2" imagesrc="/assets/third_section_second_icon.svg" />
-        <Card text="Start your own chain and crown others" imageClr="#D4ECFF" imagesrc="/assets/third_section_third_icon.svg" />
-        <Card text="Climb the leaderboard and unlock reveals" imageClr="#FFEFBB" imagesrc="/assets/third_section_fourth_icon.svg" />
+        <Card text="Pick a Crown (like “Most Likely to Go Viral”)" imageClr="#E2E3FA" imagesrc="/assets/third_section_first_icon.svg" />
+        <Card text="Send it to a friend — anonymous 👀" imageClr="#C1F2F2" imagesrc="/assets/third_section_second_icon.svg" />
+        <Card text="They unlock it by crowning someone else" imageClr="#D4ECFF" imagesrc="/assets/third_section_third_icon.svg" />
+        <Card text="Build streaks. Get crowned. Go viral." imageClr="#FFEFBB" imagesrc="/assets/third_section_fourth_icon.svg" />
       </div>
+
+      
       <Image
-        src="/assets/gold_star.svg"
+        src="/assets/gray_star.svg"
         alt="Gold star decoration"
-        width={25}
-        height={25}
+        width={15}
+        height={15}
         className="absolute top-1/12 left-1/4"
         loading="lazy"
       />
 
       <Image
-        src="/assets/gold_star.svg"
+        src="/assets/gray_star.svg"
         alt="Gold star decoration"
         width={28}
         height={28}
-        className="absolute bottom-1/5 left-1/12"
+        className="absolute bottom-1/8 left-1/8"
+        loading="lazy"
+      />
+      <Image
+        src="/assets/gold_star.svg"
+        alt="Gold star decoration"
+        width={24}
+        height={24}
+        className="absolute bottom-1/6 left-[30%]"
         loading="lazy"
       />
 
