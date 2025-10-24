@@ -39,7 +39,7 @@ export const useCategories = () => {
       setLoading(true);
       setError(null);
 
-      const apiBaseUrl = 'https://api.getcrowned.fun';
+      const apiBaseUrl = 'https://api.dev.getcrowned.fun';
       if (!apiBaseUrl) {
         throw new Error("API base URL not configured");
       }
