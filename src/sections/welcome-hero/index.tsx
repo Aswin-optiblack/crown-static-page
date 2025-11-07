@@ -106,7 +106,8 @@ const WelcomeHero = ({
                 ? `Crown (${
                     fullName ? fullName : userName ? userName : "sender's name"
                   }) and Appreciate their personality`
-                : "You've Been Crowned!"}
+                // : "You've Been Crowned!"}
+                : "Which crown suits me the best ? Crown Me !"}
             </h1>
             <p className="font-sans font-[500] tracking-wider md:text-3xl sm:text-xl text-lg max-w-5xl w-full text-center md:pt-10 sm:pt-6 pt-4 md:leading-[40px] sm:leading-8 leading-7 z-50 px-2">
               {isCrownPage
