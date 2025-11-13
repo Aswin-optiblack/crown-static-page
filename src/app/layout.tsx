@@ -21,7 +21,7 @@ const bowlbyOne = Bowlby_One({
 });
 
 export const metadata: Metadata = {
-  title: "You've Been Crowned! | Crowned App - Turn Compliments into Culture",
+  title: "Which crown suits me the best ? Crown Me! | Crowned App - Turn Compliments into Culture",
   description: "Someone from your circle just crowned you on Crowned — the app where compliments turn into culture and giving flowers is a public flex. Download now to reveal your crown!",
   keywords: ["Crowned", "compliments", "social app", "anonymous", "crowns", "community", "recognition", "social media"],
   authors: [{ name: "Crowned" }],
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     follow: true,
   },
   openGraph: {
-    title: "You've Been Crowned! | Crowned App",
+    title: "Which crown suits me the best ? Crown Me! | Crowned App",
     description: "Someone just crowned you anonymously! Open Crowned to see who thinks you're amazing and start your own crown chain.",
     url: "https://crown.getcrowned.fun",
     siteName: "Crowned",
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "You've Been Crowned! | Crowned App",
+    title: "Which crown suits me the best ? Crown Me! | Crowned App",
     description: "Someone just crowned you anonymously! Open Crowned to see who thinks you're amazing.",
     images: ["/assets/crown.svg"],
   },
