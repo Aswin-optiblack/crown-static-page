@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Image from "next/image";
 import { getCompleteIPData, CompleteIPData } from "@/utils/ipDetection";
+import { detectDeviceType } from "@/utils/deviceDetection";
+import { APP_STORE_URLS } from "@/constants/appUrls";
 import WelcomeHero from "@/sections/welcome-hero";
 import HowItWorks from "@/sections/how-it-works";
 import AppDownload from "@/sections/app-download";
@@ -19,7 +21,7 @@ export default function CrownMeContent() {
   const [completeIPData, setCompleteIPData] = useState<CompleteIPData | null>(
     null
   );
-  const [currentStep, setCurrentStep] = useState<FlowStep>("welcome");
+  const [currentStep, setCurrentStep] = useState<FlowStep>("success");
 
   useEffect(() => {
     const userParam = searchParams.get("user");
@@ -50,7 +52,24 @@ export default function CrownMeContent() {
   };
 
   const handleCloseSuccess = () => {
-    setCurrentStep("final");
+    const deviceType = detectDeviceType();
+    const userAgent = window.navigator.userAgent.toLowerCase();
+
+    // Debug alert - remove after testing
+    alert(`Device Type: ${deviceType}\n\nUser Agent: ${userAgent}`);
+
+    console.log(window.navigator.userAgent.toLowerCase())
+    console.log("Detected device type:", deviceType);
+
+    // Redirect mobile users directly to their respective app stores
+    if (deviceType === 'ios') {
+      window.open(APP_STORE_URLS.IOS, '_blank');
+    } else if (deviceType === 'android') {
+      window.open(APP_STORE_URLS.ANDROID, '_blank');
+    } else {
+      // Desktop users see the download section
+      setCurrentStep("final");
+    }
   };
 
   const handleBack = () => {
