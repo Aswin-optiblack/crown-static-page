@@ -21,7 +21,7 @@ export default function CrownMeContent() {
   const [completeIPData, setCompleteIPData] = useState<CompleteIPData | null>(
     null
   );
-  const [currentStep, setCurrentStep] = useState<FlowStep>("success");
+  const [currentStep, setCurrentStep] = useState<FlowStep>("welcome");
 
   useEffect(() => {
     const userParam = searchParams.get("user");
@@ -54,9 +54,6 @@ export default function CrownMeContent() {
   const handleCloseSuccess = () => {
     const deviceType = detectDeviceType();
     const userAgent = window.navigator.userAgent.toLowerCase();
-
-    // Debug alert - remove after testing
-    alert(`Device Type: ${deviceType}\n\nUser Agent: ${userAgent}`);
 
     console.log(window.navigator.userAgent.toLowerCase())
     console.log("Detected device type:", deviceType);
