@@ -1,5 +1,6 @@
 import { useState, useCallback } from 'react';
 import axios from 'axios';
+import { API_ENDPOINTS } from '@/config/api';
 
 interface Prompt {
   _id: string;
@@ -35,14 +36,9 @@ export const usePrompts = () => {
     try {
       setLoading(true);
       setError(null);
-      
-      const apiBaseUrl = 'https://api.dev.getcrowned.fun';
-      if (!apiBaseUrl) {
-        throw new Error('API base URL not configured');
-      }
 
       const response = await axios.get<PromptsResponse>(
-        `${apiBaseUrl}/api/prompts/BycategoryId?categoryId=${categoryId}`
+        API_ENDPOINTS.PROMPTS_BY_CATEGORY(categoryId)
       );
       
       if (response.data.success && response.data.data.prompt) {

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { API_ENDPOINTS } from "@/config/api";
 
 interface Category {
   _id: string;
@@ -39,13 +40,8 @@ export const useCategories = () => {
       setLoading(true);
       setError(null);
 
-      const apiBaseUrl = 'https://api.dev.getcrowned.fun';
-      if (!apiBaseUrl) {
-        throw new Error("API base URL not configured");
-      }
-
       const response = await axios.get<CategoriesResponse>(
-        `${apiBaseUrl}/api/category/all`
+        API_ENDPOINTS.CATEGORIES_ALL
       );
 
       if (response.data.success && response.data.data.categories) {

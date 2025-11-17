@@ -1,6 +1,7 @@
 import { useState, useCallback } from 'react';
 import axios from 'axios';
 import { CompleteIPData } from '@/utils/ipDetection';
+import { API_ENDPOINTS } from '@/config/api';
 
 interface CrownMeRequest {
   category: string;
@@ -27,15 +28,9 @@ export const useCrownMe = () => {
       setLoading(true);
       setError(null);
       setSuccess(false);
-      
-      const apiBaseUrl = 'https://api.dev.getcrowned.fun';
-      if (!apiBaseUrl) {
-        throw new Error('API base URL not configured');
-      }
 
       // Include complete IP data if available
       let requestWithCompleteData = { ...requestData };
-      
       if (completeIPData?.ip) {
         requestWithCompleteData = {
           ...requestData,
@@ -44,7 +39,7 @@ export const useCrownMe = () => {
       }
 
       const response = await axios.post<CrownMeResponse>(
-        `${apiBaseUrl}/api/crowns/crown-me`,
+        API_ENDPOINTS.CROWN_ME,
         requestWithCompleteData,
         {
           headers: {
